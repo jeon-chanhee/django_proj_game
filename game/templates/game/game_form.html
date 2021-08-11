@@ -1,0 +1,14 @@
+{% extends "game/layout.html" %}
+
+{% block content %}
+
+<h2>추천하기</h2>
+<form action="" method="POST" , enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{ form }}
+    </table>
+    <input type="submit" />
+</form>
+
+{% endblock %}

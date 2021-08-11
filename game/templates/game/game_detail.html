@@ -1,0 +1,63 @@
+{% extends "game/layout.html" %}
+{% block content %}
+
+<h1>상세설명</h1>
+<br>
+<ul>
+
+    <li>
+        <h2>{{game.name}}</h2>
+        <hr />
+        {% if game.photo %}
+        <img src="{{ game.photo.url }}" style="width: 400px; height: 300px;">
+        {% endif %}
+        <hr />
+
+    </li>
+</ul>
+
+<ul>
+    <li>
+        <h2>장르 : {{ game.type }}</h2>
+    </li>
+</ul>
+<hr />
+<ul>
+    <li>
+        <h2>게임 설명</h2>
+        {{ game.desc }}
+    </li>
+</ul>
+<hr />
+<ul>
+
+    <li>
+        <h2>게임 리뷰</h2>
+        <h4><a href="{% url 'review_new' game.pk %}">리뷰쓰기</a></h4>
+    </li>
+
+</ul>
+<ul>
+    {% for review in review_list %}
+    <li>
+        {{ review.message }}
+        <a href="{% url 'review_edit' game.pk review.pk %}">수정</a>
+        <a href="{% url 'review_delete' game.pk review.pk %}">삭제</a>
+        <br><br>
+    </li>
+    {% endfor %}
+</ul>
+<hr />
+<ul>
+    {% for video in video_list %}
+    <li>
+        <h2>프로모션 영상</h2><br>
+        <h4>{{video.title}}</h4><br>
+        {{ video.youtube_embed_html }}
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="/game/">Game List</a>
+
+{% endblock %}

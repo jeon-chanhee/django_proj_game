@@ -1,0 +1,26 @@
+{% extends "game/layout.html" %}
+{% block content %}
+
+
+코로나로 인해 집에있는 시간이 많아진 여러분들!
+적당한 게임은 삶의 활력소가 됩니다 ^^
+<br>여러분들을 위해 제가 해본 게임 및 게임플랫폼 사이트에 나와있는 게임리스트를
+모아 추천해드리겠습니다!
+모두 즐겜~~~
+<br><br>
+<h4>Game List</h4>
+<br>
+<ul>
+    {% for game in game_list %}
+    <li>
+        <h4><a href="{% url 'game_detail' game.pk %}">{{ game.name }}</a></h4>
+
+    </li>
+    {% endfor %}
+
+</ul>
+
+<br>
+<a href="{% url 'game_new' %}">게임 추천하기</a>
+
+{% endblock %}
